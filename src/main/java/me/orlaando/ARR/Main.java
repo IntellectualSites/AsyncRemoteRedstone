@@ -22,7 +22,7 @@ public class Main extends JavaPlugin {
         this.messageHandler = new MessageHandler(this);
 
         try {
-            sqLiteStorage = new SQLiteStorage();
+            sqLiteStorage = new SQLiteStorage(this);
         } catch (final Exception e) {
             e.printStackTrace();
         }

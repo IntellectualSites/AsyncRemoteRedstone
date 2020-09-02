@@ -1,5 +1,7 @@
 package me.orlaando.ARR.storage;
 
+import me.orlaando.ARR.Main;
+import org.bukkit.Bukkit;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -17,9 +19,12 @@ public class SQLiteStorage {
 
     private final File file;
     private Connection connection;
+    private final Main ARR;
 
-    public SQLiteStorage() throws Exception {
-        this.file = new File("database.db");
+    public SQLiteStorage(Main ARR) throws Exception {
+        this.ARR = ARR;
+        Class.forName("org.sqlite.JDBC");
+        this.file = new File(ARR.getDataFolder(), "database.db");
         if (!file.exists()) {
             if (!file.createNewFile()) {
                 throw new RuntimeException("Could not create database.db");
@@ -29,7 +34,7 @@ public class SQLiteStorage {
 
     public CompletableFuture<ResultSet> query( final PreparedStatement statement) {
         CompletableFuture<ResultSet> completableFuture = new CompletableFuture<>();
-        new Thread(() -> {
+        Bukkit.getScheduler().runTaskAsynchronously(ARR, () -> {
             synchronized (this.statementLock) {
                 try {
                     ResultSet resultSet = statement.executeQuery();
@@ -38,13 +43,13 @@ public class SQLiteStorage {
                     throwables.printStackTrace();
                 }
             }
-        }).start();
+        });
 
         return completableFuture;
     }
 
     public void update(final PreparedStatement statement) {
-        new Thread(() -> {
+        Bukkit.getScheduler().runTaskAsynchronously(ARR, () -> {
             synchronized (this.statementLock) {
                 try {
                     statement.executeUpdate();
@@ -52,7 +57,7 @@ public class SQLiteStorage {
                     throwables.printStackTrace();
                 }
             }
-        }).start();
+        });
     }
 
     public boolean startStorage() {
