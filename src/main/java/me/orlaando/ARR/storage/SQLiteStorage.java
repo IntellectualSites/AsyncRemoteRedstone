@@ -17,7 +17,6 @@ public class SQLiteStorage {
 
     private final File file;
     private Connection connection;
-    private PreparedStatement statement;
 
     public SQLiteStorage() throws Exception {
         this.file = new File("database.db");
@@ -67,7 +66,7 @@ public class SQLiteStorage {
             final Statement statement = this.getConnection().createStatement();
             statement.addBatch(DDL1);
             statement.addBatch(DDL2);
-            statement.executeBatch();
+            //statement.executeBatch();
         } catch (final Exception e) {
             LOGGER.error("Failed to create event table", e);
         }
@@ -83,7 +82,6 @@ public class SQLiteStorage {
             }
         }
     }
-
 
     private Connection getConnection() {
         return this.connection;

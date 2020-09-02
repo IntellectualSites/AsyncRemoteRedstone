@@ -1,0 +1,7 @@
+{
+  "prefix": "&7[ARR] ",
+  "command.error": "&cSomething went wrong when executing the command. Error: %s",
+  "command.not-permitted": "&cYou're lacking the permission: %s",
+  "command.syntax": "&cUsage: %s",
+  "command.ping": "&apong!"
+}
