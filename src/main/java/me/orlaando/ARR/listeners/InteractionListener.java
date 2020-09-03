@@ -15,16 +15,10 @@ public class InteractionListener implements Listener {
     public void onPlayerInteract(final PlayerInteractEvent event) {
         Block block = event.getClickedBlock();
         if (block.getType().equals(Material.REDSTONE_LAMP)) {
-            event.getPlayer().sendRawMessage("hi");
             event.setCancelled(true);
             synchronized (lock) {
                 Lightable lightable = (Lightable) block.getBlockData();
-                if (!lightable.isLit()) {
-                    lightable.setLit(true);
-                    block.setBlockData(lightable);
-                    return;
-                }
-                lightable.setLit(false);
+                lightable.setLit(!lightable.isLit());
                 block.setBlockData(lightable);
             }
         }
