@@ -8,7 +8,6 @@ import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerInteractEvent;
 
-
 public class InteractionListener implements Listener {
     private final Object lock = new Object();
 
@@ -20,7 +19,13 @@ public class InteractionListener implements Listener {
             event.setCancelled(true);
             synchronized (lock) {
                 Lightable lightable = (Lightable) block.getBlockData();
-                lightable.setLit(true);
+                if (!lightable.isLit()) {
+                    lightable.setLit(true);
+                    block.setBlockData(lightable);
+                    return;
+                }
+                lightable.setLit(false);
+                block.setBlockData(lightable);
             }
         }
     }
