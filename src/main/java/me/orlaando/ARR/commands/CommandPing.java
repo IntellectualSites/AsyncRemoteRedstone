@@ -23,7 +23,7 @@ public class CommandPing extends BaseCommand {
     }
 
     @Subcommand("foo")
-    public void onFoo2(CommandSender sender, @Single String foo) {
+    public void onFoo2(CommandSender sender, @Single String foo)  {
         sender.sendMessage("You foo'd with " + foo);
     }
 

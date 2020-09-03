@@ -12,6 +12,7 @@ import java.util.concurrent.CompletableFuture;
 public class SQLiteStorage {
     private static final Logger LOGGER = LoggerFactory.getLogger(SQLiteStorage.class);
 
+    //todo: actually setup table structure
     private static final String DDL1 = "CREATE TABLE IF NOT EXISTS hjdgjghkhjkhjk";
     private static final String DDL2 = "CREATE TABLE IF NOT EXISTS hjghjhjkhjk";
 
@@ -32,20 +33,29 @@ public class SQLiteStorage {
         }
     }
 
-    public CompletableFuture<ResultSet> query( final PreparedStatement statement) {
-        CompletableFuture<ResultSet> completableFuture = new CompletableFuture<>();
-        Bukkit.getScheduler().runTaskAsynchronously(ARR, () -> {
-            synchronized (this.statementLock) {
-                try {
-                    ResultSet resultSet = statement.executeQuery();
-                    completableFuture.complete(resultSet);
-                } catch (SQLException throwables) {
-                    throwables.printStackTrace();
-                }
-            }
-        });
+    public PreparedStatement createStatement(String sql) {
+        try {
+            return this.connection.prepareStatement(sql);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 
-        return completableFuture;
+    public CompletableFuture<ResultSet> query( final PreparedStatement statement) {
+            CompletableFuture<ResultSet> completableFuture = new CompletableFuture<>();
+            Bukkit.getScheduler().runTaskAsynchronously(ARR, () -> {
+                synchronized (this.statementLock) {
+                    ResultSet resultSet = null;
+                    try {
+                        resultSet = statement.executeQuery();
+                    } catch (SQLException throwables) {
+                        throwables.printStackTrace();
+                    }
+                    completableFuture.complete(resultSet);
+                }
+            });
+            return completableFuture;
     }
 
     public void update(final PreparedStatement statement) {
