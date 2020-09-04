@@ -60,6 +60,11 @@
             <url>https://repo.aikar.co/content/groups/aikar/</url>
         </repository>
 
+        <repository>
+            <id>enginehub-maven</id>
+            <url>http://maven.enginehub.org/repo/</url>
+        </repository>
+
     </repositories>
 
 
@@ -92,10 +97,10 @@
             <scope>compile</scope>
         </dependency>
 
-        <dependency> <!-- Spigot (this includes Spigot API, Bukkit API, Craftbukkit and NMS) -->
-            <groupId>org.spigotmc</groupId>
-            <artifactId>spigot</artifactId>
-            <version>1.16.2-R0.1-SNAPSHOT</version>
+        <dependency>
+            <groupId>com.sk89q.worldedit</groupId>
+            <artifactId>worldedit-bukkit</artifactId>
+            <version>7.2.0-SNAPSHOT</version>
             <scope>provided</scope>
         </dependency>
 

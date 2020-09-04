@@ -31,7 +31,6 @@ public class MessageHandler {
     public MessageHandler(@NotNull final Main ARR) {
         instance = this;
         // Add defaults
-        messages.clear();
         try (final JsonReader reader = GSON.newJsonReader(new InputStreamReader(
                 Objects.requireNonNull(ARR.getResource("messages.json"))))) {
             final JsonObject object = GSON.fromJson(reader, JsonObject.class);

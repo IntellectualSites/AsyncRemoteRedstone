@@ -32,14 +32,14 @@ public class CommandPing extends BaseCommand {
     public void onUnknown(CommandSender sender) {
         sender.sendMessage(
                 String.format(
-                TranslatableMessage.of("command.syntax").getMessage(),
+                TranslatableMessage.of("command.syntax"),
                 "/ping [foo] [player]")
         );
     }
 
     @Default
     public void test(Player player) {
-        player.sendMessage(TranslatableMessage.of("command.ping").getMessage());
+        player.sendMessage(TranslatableMessage.of("command.ping"));
     }
 
 }
