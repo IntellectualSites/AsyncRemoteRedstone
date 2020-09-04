@@ -60,11 +60,6 @@
             <url>https://repo.aikar.co/content/groups/aikar/</url>
         </repository>
 
-        <repository>
-            <id>enginehub-maven</id>
-            <url>http://maven.enginehub.org/repo/</url>
-        </repository>
-
     </repositories>
 
 
@@ -95,13 +90,6 @@
             <artifactId>acf-paper</artifactId>
             <version>0.5.0-SNAPSHOT</version>
             <scope>compile</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>com.sk89q.worldedit</groupId>
-            <artifactId>worldedit-bukkit</artifactId>
-            <version>7.2.0-SNAPSHOT</version>
-            <scope>provided</scope>
         </dependency>
 
     </dependencies>
