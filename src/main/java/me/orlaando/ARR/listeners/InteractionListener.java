@@ -12,7 +12,10 @@ public class InteractionListener implements Listener {
 
     @EventHandler(priority = EventPriority.LOWEST)
     public void onPlayerInteract(final PlayerInteractEvent event) {
+
         Block block = event.getClickedBlock();
+        if (block == null || block.getType() == Material.AIR) return;
+
         if (block.getType().equals(Material.REDSTONE_LAMP)) {
             event.setCancelled(true);
 
