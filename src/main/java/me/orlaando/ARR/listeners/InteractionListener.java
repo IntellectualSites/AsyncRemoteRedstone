@@ -9,18 +9,16 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerInteractEvent;
 
 public class InteractionListener implements Listener {
-    private final Object lock = new Object();
 
     @EventHandler(priority = EventPriority.HIGHEST)
     public void onPlayerInteract(final PlayerInteractEvent event) {
         Block block = event.getClickedBlock();
         if (block.getType().equals(Material.REDSTONE_LAMP)) {
             event.setCancelled(true);
-            synchronized (lock) {
-                Lightable lightable = (Lightable) block.getBlockData();
-                lightable.setLit(!lightable.isLit());
-                block.setBlockData(lightable);
-            }
+
+            Lightable lightable = (Lightable) block.getBlockData();
+            lightable.setLit(!lightable.isLit());
+            block.setBlockData(lightable);
         }
     }
 }
