@@ -4,7 +4,6 @@ import co.aikar.commands.BaseCommand;
 import co.aikar.commands.annotation.*;
 import me.orlaando.ARR.Main;
 import me.orlaando.ARR.configuration.TranslatableMessage;
-import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
 
 @CommandAlias("arr")
