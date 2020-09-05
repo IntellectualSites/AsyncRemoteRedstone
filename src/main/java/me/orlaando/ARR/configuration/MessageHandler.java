@@ -30,16 +30,6 @@ public class MessageHandler {
 
     public MessageHandler(@NotNull final Main ARR) {
         instance = this;
-        // Add defaults
-        try (final JsonReader reader = GSON.newJsonReader(new InputStreamReader(
-                Objects.requireNonNull(ARR.getResource("messages.json"))))) {
-            final JsonObject object = GSON.fromJson(reader, JsonObject.class);
-            for (final Map.Entry<String, JsonElement> elements : object.entrySet()) {
-                messages.put(elements.getKey(), elements.getValue().getAsString());
-            }
-        } catch (final IOException e) {
-            LOGGER.error("Failed to load messages", e);
-        }
         ARR.saveResource("messages.json", false);
         try (final JsonReader reader = GSON.newJsonReader(Files
                 .newReader(new File(ARR.getDataFolder(), "messages.json"),
@@ -51,10 +41,6 @@ public class MessageHandler {
         } catch (final IOException e) {
             LOGGER.error("Failed to load messages", e);
         }
-    }
-
-    public static MessageHandler getInstance() {
-        return instance;
     }
 
     /**
