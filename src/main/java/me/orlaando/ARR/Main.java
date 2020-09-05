@@ -1,7 +1,7 @@
 package me.orlaando.ARR;
 
 import co.aikar.commands.PaperCommandManager;
-import me.orlaando.ARR.commands.CommandPing;
+import me.orlaando.ARR.commands.CommandARR;
 import me.orlaando.ARR.configuration.MessageHandler;
 import me.orlaando.ARR.listeners.InteractionListener;
 import me.orlaando.ARR.storage.SQLiteStorage;
@@ -16,7 +16,7 @@ public class Main extends JavaPlugin {
 
     private static SQLiteStorage sqLiteStorage;
     private static Main ARR;
-    private MessageHandler messageHandler;
+    private static MessageHandler messageHandler;
     private PaperCommandManager commandManager;
 
     private static final Logger LOGGER = LoggerFactory.getLogger(Main.class);
@@ -24,7 +24,7 @@ public class Main extends JavaPlugin {
     @Override public void onEnable() {
         ARR = this;
 
-        this.messageHandler = new MessageHandler(ARR);
+        messageHandler = new MessageHandler(ARR);
 
         try {
             sqLiteStorage = new SQLiteStorage(ARR);
@@ -38,7 +38,7 @@ public class Main extends JavaPlugin {
 
         commandManager = new PaperCommandManager(ARR);
 
-        commandManager.registerCommand(new CommandPing());
+        commandManager.registerCommand(new CommandARR());
 
         Bukkit.getPluginManager().registerEvents(new InteractionListener(), this);
 
@@ -46,6 +46,14 @@ public class Main extends JavaPlugin {
 
     @Override public void onDisable() {
         getSqLiteStorage().stopStorage();
+    }
+
+    public void reloadMessages() {
+        messageHandler = new MessageHandler(ARR);
+    }
+
+    public static MessageHandler getMessageHandler() {
+        return messageHandler;
     }
 
     @NotNull public static SQLiteStorage getSqLiteStorage() {
