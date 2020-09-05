@@ -13,7 +13,7 @@ public class SQLiteStorage {
     private static final Logger LOGGER = LoggerFactory.getLogger(SQLiteStorage.class);
 
     //todo: actually setup table structure
-    private static final String DDL1 = "CREATE TABLE IF NOT EXISTS hjdgjghkhjkhjk";
+    private static final String DDL1 = "CREATE TABLE IF NOT EXISTS `devices` ";
     private static final String DDL2 = "CREATE TABLE IF NOT EXISTS hjghjhjkhjk";
 
     private final Object statementLock = new Object();
