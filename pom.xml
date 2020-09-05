@@ -62,8 +62,6 @@
 
     </repositories>
 
-
-
     <dependencies>
         <!--This adds the Spigot API artifact to the build -->
         <dependency>
