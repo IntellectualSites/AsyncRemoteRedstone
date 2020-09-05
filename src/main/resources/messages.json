@@ -1,5 +1,7 @@
 {
   "prefix": "&7[ARR] ",
+  "plugin.reload.success": "&aMessages and configuration has been reloaded.",
+  "plugin.reload.failure": "&cUnable to reload plugin. Please double check your messages.json and config.yml",
   "command.error": "&cSomething went wrong when executing the command. Error: %s",
   "command.not-permitted": "&cYou're lacking the permission: %s",
   "command.syntax": "&cUsage: %s",
