@@ -59,7 +59,7 @@ public class Main extends JavaPlugin {
         try {
             version = Bukkit.getServer().getClass().getPackage().getName().split("\\.")[3];
         } catch (ArrayIndexOutOfBoundsException exception) {
-            LOGGER.error("You aren't using a supported Mincraft version..");
+            LOGGER.error("You aren't using a supported Minecraft version..");
             Bukkit.getPluginManager().disablePlugin(this);
             return;
         }
@@ -78,7 +78,7 @@ public class Main extends JavaPlugin {
         }
 
         if (version == null) {
-            LOGGER.error("You aren't using a supported Mincraft version..");
+            LOGGER.error("You aren't using a supported Minecraft version..");
             Bukkit.getPluginManager().disablePlugin(this);
         }
     }
