@@ -1,8 +1,10 @@
 package me.orlaando.ARR.adapters;
 
+import org.bukkit.block.Block;
+
 public class mc1_13_2 implements NMSAdapter {
 
-    @Override public void extendPiston() {
-        //do something
+    @Override public void extendPiston(Block piston) {
+
     }
 }

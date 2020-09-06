@@ -64,18 +64,22 @@ public class Main extends JavaPlugin {
             return;
         }
 
-        LOGGER.info("Your server is running version " + version);
-
         switch (version) {
             case "v1_16_R2":
                 nmsAdapter = new mc1_16_2();
+                break;
             case "v1_15_R1":
                 nmsAdapter = new mc1_15_2();
+                break;
             case "v1_14_R1":
                 nmsAdapter = new mc1_14_4();
+                break;
             case "v1_13_R2":
                 nmsAdapter = new mc1_13_2();
+                break;
         }
+
+        LOGGER.info("Using adapter " + nmsAdapter.toString());
 
         if (version == null) {
             LOGGER.error("You aren't using a supported Minecraft version..");
