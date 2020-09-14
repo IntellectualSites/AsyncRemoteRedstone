@@ -11,7 +11,7 @@ import org.bukkit.craftbukkit.v1_16_R2.CraftWorld;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
-public class mc1_16_2 implements NMSAdapter {
+public class mc1_16_3 implements NMSAdapter {
 
     @Override public void extendPiston(Block piston) {
         Bukkit.broadcastMessage("extend piston method called");

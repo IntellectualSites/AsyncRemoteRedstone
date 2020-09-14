@@ -66,7 +66,7 @@ public class Main extends JavaPlugin {
 
         switch (version) {
             case "v1_16_R2":
-                nmsAdapter = new mc1_16_2();
+                nmsAdapter = new mc1_16_3();
                 break;
             case "v1_15_R1":
                 nmsAdapter = new mc1_15_2();
